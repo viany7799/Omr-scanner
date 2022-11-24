@@ -1,0 +1,53 @@
+{% load static %}
+
+<html>
+   <head>
+        <style type=“text/css”>
+            #submit{
+            background-color: #00c4cc;
+            border: none;
+            outline: none;
+            border-radius: 4px;
+            color: #fff;
+            display: block;
+            font-family: inherit;
+            font-size: 22px;
+            font-weight: bolder;
+            padding: 8px;
+            margin-top: 20px;
+            width: 100%;
+            cursor: pointer;
+            transition: all 0.3s;
+}
+
+        </style>
+
+   </head>
+   <center>
+  <body>
+  <script>
+   {% if messages %}
+   {% for message in messages %}
+
+ alert('{{ message }}');
+ {% endfor %}
+{% endif %}
+</script>
+	<h2>Select Folder Path</h2></br></br>
+     <input type="file" id="filepicker"  name="fileList"/></br></br></br></br></br></br></br>
+    <form action="" method="post" enctype ="multipart/form-data">
+       {% csrf_token %}
+
+       <b> <label  style="font-size:20px">ENTER  THE  PATH  SELECTED:</b>
+            <input type="text" name="path" id="path"  style="font-size: 18pt; height: 30px;" size="25"/></label></br></br>
+
+       <input style="font-size:20px" id="submit" type="submit" value="submit"/><pre> </pre> <input style="font-size:15px" type="reset" value="Reset" />
+        </form>
+
+
+
+
+
+</body>
+</center>
+</html>

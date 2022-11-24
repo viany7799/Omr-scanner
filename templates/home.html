@@ -1,0 +1,56 @@
+{% load static %}
+
+<html>
+   <head>
+
+       <style type=“text/css”>
+            #submit {
+                color: #fff;
+                font-size: 0;
+                width: 135px;
+                height: 60px;
+                border: none;
+                margin: 0;
+                 padding: 0;
+                background: #0c0 url(image) 0 0 no-repeat;
+            }
+        </style>
+
+   </head>
+   <center>
+  <body>
+	<h1>Select Folder Path</h1></br></br>
+    <input type="file" id="filepicker"  name="fileList" webkitdirectory multiple /></br></br></br></br></br></br></br>
+    <form action="" method="post" enctype ="multipart/form-data">
+       {% csrf_token %}
+
+       <b> <label  style="font-size:20px">ENTER  THE  PATH  SELECTED:</b>
+            <input type="text" name="path" id="path"  style="font-size: 18pt; height: 30px;" size="25"/></label></br></br>
+        <b><label style="font-size:20px">ENTER  THE  BUNDLE  NUMBER:</b>
+            <input type="number" name="number" id="number"  style="font-size: 18pt; height: 30px;" size="40" /></label></br></br></br>
+
+       <input type="reset" name="submit" value="Reset"/><pre> </pre> <input name="submit" type="submit" value="submit" />
+        </form>
+
+<h1>{{output}}</h1>
+
+	<br><h2 >Selected files are:</h2>
+	<ul id="listing"></ul>
+  <script>
+		document.getElementById("filepicker").addEventListener("change", function(event) {
+		let output = document.getElementById("listing");
+		let files = event.target.files;
+
+		for (let i=0; i<files.length; i++) {
+		let item = document.createElement("li");
+		item.innerHTML = files[i].webkitRelativePath;
+		output.appendChild(item);
+	};
+	},false);
+</script>
+
+
+
+</body>
+</center>
+</html>
